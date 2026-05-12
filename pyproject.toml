@@ -1,0 +1,18 @@
+[project]
+name = "notes-publisher"
+version = "0.1.0"
+description = "Publish HTML bodies to a static-site repo as unguessable 22-char URLs. Pairs with notes-dash."
+requires-python = ">=3.12"
+license = { text = "MIT" }
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/shayan-ys/notes-publisher"
+"Companion dashboard" = "https://github.com/shayan-ys/notes-dash"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

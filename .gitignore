@@ -1,0 +1,25 @@
+# Resolved secrets and personal config — never commit
+.env
+.env.tpl
+*.env
+
+# Runtime state (the cloned content repo lives here)
+.pipeline/
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Personal Pi-side glue script — not part of the OSS package
+publish-and-refresh.sh
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*~
