@@ -16,9 +16,9 @@ up auth, accounts, or a database. URL-obscurity, honestly named.
   as a flag.
 - **Cloudflare Pages / Workers friendly.** Push to your content repo; CF
   redeploys. An example `cloudflare-pages/` config is included.
-- **A wrapping `<head>` and footer** with `noindex,nofollow`,
-  `no-referrer`, and a plain-language disclaimer footer that names what
-  URL-obscurity does and doesn't protect against.
+- **A minimal wrapping `<head>`** with `noindex,nofollow` and
+  `no-referrer`. No footer or disclaimer — the body fragment owns
+  everything between `<body>` tags.
 - **Python 3.12, stdlib + `pytest` only.** Zero runtime deps. ~400 LOC
   including tests.
 
@@ -99,8 +99,8 @@ python unpublish.py --slug=<slug>
 
 The `<body-file>` argument is the inner HTML — what goes *inside* `<body>`.
 The package's `wrap_body()` adds the doctype, `<html>`, `<head>` (with
-title, viewport, robots noindex, no-referrer meta, baseline CSS), the
-`<body>` open/close, and the disclaimer footer.
+title, viewport, robots noindex, no-referrer meta, baseline CSS), and
+the `<body>` open/close.
 
 The wrapper's baseline CSS is intentionally thin — any `<style>` block in
 the body overrides it via source-order specificity.
@@ -162,7 +162,7 @@ pytest -v
 
 33 tests, all stdlib + pytest. They cover slug entropy + flag-safety,
 ledger read/write, git wrapper command shapes, template wrapping (doctype,
-meta tags, title escaping, disclaimer presence), and end-to-end CLI flow
+meta tags, title escaping), and end-to-end CLI flow
 through publish/list/unpublish with a fake repo.
 
 ## Companion projects

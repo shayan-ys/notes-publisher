@@ -1,18 +1,12 @@
-"""Wrap Claude-authored body HTML in standard <head> and footer.
+"""Wrap Claude-authored body HTML in a standard <head>.
 
 The wrapper is intentionally thin: a tiny baseline reset + a "skin" of
 fallback typography that matches the notes-dash favicon palette, plus
-required meta tags and the disclaimer footer. Anything the body's own
-inline <style> defines wins via the cascade, so a frontend-designed
-body can fully take over the page without fighting the wrapper.
+required meta tags. Anything the body's own inline <style> defines wins
+via the cascade, so a frontend-designed body can fully take over the
+page without fighting the wrapper.
 """
 from html import escape
-
-DISCLAIMER = (
-    "This page is shared by unguessable URL. Search engines won't index it, "
-    "but the link travels through whatever messaging platform you share it on "
-    "— don't share anything you wouldn't put directly in that DM."
-)
 
 
 def wrap_body(body: str, *, title: str) -> str:
@@ -50,27 +44,13 @@ def wrap_body(body: str, *, title: str) -> str:
   }}
   img, svg, video {{ max-width: 100%; height: auto; }}
   pre {{ overflow-x: auto; }}
-  footer.notes-disclaimer {{
-    margin-top: 4rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(26, 20, 16, 0.18);
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: rgba(26, 20, 16, 0.55);
-    font-family: ui-sans-serif, system-ui, sans-serif;
-  }}
   @media (prefers-color-scheme: dark) {{
     body {{ color: #f3ece0; background: #1a1410; }}
-    footer.notes-disclaimer {{
-      border-top-color: rgba(243, 236, 224, 0.18);
-      color: rgba(243, 236, 224, 0.55);
-    }}
   }}
 </style>
 </head>
 <body>
 {body}
-<footer class="notes-disclaimer">{DISCLAIMER}</footer>
 </body>
 </html>
 """

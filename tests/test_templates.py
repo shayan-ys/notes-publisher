@@ -32,8 +32,7 @@ def test_wrap_inlines_body_unchanged():
     assert body in out
 
 
-def test_wrap_includes_disclaimer_footer():
+def test_wrap_omits_disclaimer_footer():
     out = wrap_body("<p>hi</p>", title="x")
-    # The disclaimer must name what URL-obscurity does NOT protect against.
-    assert "messaging platform" in out.lower()
-    assert "footer" in out.lower() or "<footer" in out
+    assert "<footer" not in out
+    assert "messaging platform" not in out.lower()
