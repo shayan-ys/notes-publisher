@@ -27,7 +27,7 @@ def wrap_body(body: str, *, title: str) -> str:
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>{safe_title}</title>
 <style>
-  /* Fallback baseline — any <style> in the body overrides this. */
+  /* Fallback baseline — any inline style block in the body overrides this. */
   *, *::before, *::after {{ box-sizing: border-box; }}
   html {{ -webkit-text-size-adjust: 100%; }}
   body {{

@@ -21,7 +21,7 @@ wheels = [
 ]
 
 [[package]]
-name = "notes-publish"
+name = "notes-publisher"
 version = "0.1.0"
 source = { virtual = "." }
 
